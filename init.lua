@@ -449,7 +449,6 @@ require('lazy').setup({
       --
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
-
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -565,6 +564,21 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        clangd = {
+          capabilities = capabilities,
+          cmd = {
+            'clangd',
+            '--clang-tidy',
+            '--background-index',
+            '--header-insertion=iwyu',
+            '--completion-style=detailed',
+            '--function-arg-placeholders',
+            '--fallback-style=llvm',
+            '-compile-commands-dir=build/debug',
+            '--offset-encoding=utf-16',
+            -- "--query-driver=/home/denis/dev/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-g++"
+          },
+        },
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -784,13 +798,20 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-storm'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
+    config = function()
+      require('tokyonight').setup {
+        on_colors = function(colors)
+          colors.comment = '#999999'
+          colors.hint = colors.orange
+        end,
+      }
+    end,
   },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
