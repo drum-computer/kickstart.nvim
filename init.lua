@@ -576,7 +576,7 @@ require('lazy').setup({
             '--completion-style=detailed',
             '--function-arg-placeholders',
             '--fallback-style=llvm',
-            '-compile-commands-dir=build/debug',
+            '-compile-commands-dir=build/Debug',
             '--offset-encoding=utf-16',
             -- "--query-driver=/home/denis/dev/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-g++"
           },
