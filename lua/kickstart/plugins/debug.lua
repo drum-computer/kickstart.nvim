@@ -27,6 +27,7 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    require('dap').defaults.fallback.auto_continue_if_many_stopped = false
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -61,6 +62,7 @@ return {
         type = 'codelldb',
         request = 'launch',
         program = function()
+          vim.fn.system('cmake', '--build --preset=build-default-Debug')
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
@@ -88,15 +90,15 @@ return {
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
         icons = {
-          pause = '⏸',
-          play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
-          step_back = 'b',
-          run_last = '▶▶',
-          terminate = '⏹',
-          disconnect = '⏏',
+          -- pause = '⏸',
+          -- play = '▶',
+          -- step_into = '⏎',
+          -- step_over = '⏭',
+          -- step_out = '⏮',
+          -- step_back = 'b',
+          -- run_last = '▶▶',
+          -- terminate = '⏹',
+          -- disconnect = '⏏',
         },
       },
     }
