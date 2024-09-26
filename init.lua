@@ -579,7 +579,7 @@ require('lazy').setup({
             'clangd',
             '--clang-tidy',
             '--background-index',
-            '--header-insertion=iwyu',
+            '--header-insertion=never',
             '--completion-style=detailed',
             '--function-arg-placeholders',
             '--fallback-style=llvm',
