@@ -355,7 +355,15 @@ require('lazy').setup({
           --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           --   },
         },
-        -- pickers = {}
+        pickers = {
+          lsp_document_symbols = {
+            symbol_width = 100,
+          },
+          lsp_references = {
+            -- include_current_line = true,
+            fname_width = 70,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -369,12 +377,7 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      require('telescope.builtin').lsp_references {
-        fname_width = 100,
-        -- symbol_width = 100,
-        -- symbol_type_width = 50,
-        include_current_line = true,
-      }
+
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -579,7 +582,7 @@ require('lazy').setup({
             '--completion-style=detailed',
             '--function-arg-placeholders',
             '--fallback-style=webkit',
-            '-compile-commands-dir=build-linux/Debug',
+            '-compile-commands-dir=build/Debug',
             '--offset-encoding=utf-16',
             -- "--query-driver=/home/denis/dev/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-g++"
           },
