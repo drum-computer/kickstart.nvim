@@ -893,7 +893,6 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -913,22 +912,6 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-storm'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-    config = function()
-      require('tokyonight').setup {
-        on_highlights = function(colors)
-          colors.LineNr = {
-            fg = '#999999',
-          }
-        end,
-        on_colors = function(colors)
-          colors.comment = '#999999'
-          colors.hint = colors.orange
-        end,
-      }
     end,
   },
   -- Highlight todo, notes, etc in comments
