@@ -586,7 +586,7 @@ require('lazy').setup({
             end
           end
 
-          vim.keymap.set('n', '<leader>go', ':ClangdSwitchSourceHeader<CR>', {})
+          vim.keymap.set('n', '<leader>go', ':LspClangdSwitchSourceHeader<CR>', {})
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
