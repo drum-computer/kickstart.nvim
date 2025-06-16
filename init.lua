@@ -681,7 +681,9 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      vim.lsp.enable 'clangd'
       vim.lsp.config('clangd', {
+        capabilities = capabilities,
         cmd = {
           'clangd',
           '--clang-tidy',
@@ -690,7 +692,8 @@ require('lazy').setup({
           '--completion-style=detailed',
           '--function-arg-placeholders',
           '--fallback-style=webkit',
-          '--query-driver=/usr/bin/arm-none-eabi-gcc',
+          -- '--query-driver=/usr/bin/arm-none-eabi-gcc',
+          '-compile-commands-dir=build/Debug',
         },
       })
 
