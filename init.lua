@@ -692,11 +692,11 @@ require('lazy').setup({
           '--background-index',
           '--header-insertion=never',
           '--completion-style=detailed',
-          '--function-arg-placeholders',
           '--fallback-style=webkit',
-          -- '--query-driver=/usr/bin/arm-none-eabi-gcc',
-          '-compile-commands-dir=build/Debug',
+          '--query-driver=/usr/bin/arm-none-eabi-gcc',
+          -- '-compile-commands-dir=build/Debug',
         },
+        root_markers = { '.git' }
       })
 
       -- Ensure the servers and tools above are installed
